@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { LocationContext } from "../context";
 
+//weather hook create
 const useWeather = () => {
+  //Local state
   const [weatherData, setWeatherData] = useState({
     location: "",
     climate: "",
@@ -19,11 +21,12 @@ const useWeather = () => {
     state: false,
     message: "",
   });
-
   const [error, setError] = useState(null);
 
+  //context API call
   const { selectedLocation } = useContext(LocationContext);
 
+  //data fetch from API
   const fetchWeatherData = async (latitude, longitude) => {
     try {
       setLoading({
@@ -45,6 +48,7 @@ const useWeather = () => {
 
       const data = await response.json();
 
+      //get update weather data
       const updateWeatherData = {
         ...weatherData,
         location: data?.name,
@@ -71,6 +75,7 @@ const useWeather = () => {
     }
   };
 
+  //get geo location web API using useEffect
   useEffect(() => {
     setLoading({
       ...loading,
