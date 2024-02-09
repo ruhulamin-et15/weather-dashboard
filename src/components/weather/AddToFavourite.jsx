@@ -36,7 +36,9 @@ function AddToFavourite() {
           className="text-sm md:text-base inline-flex items-center space-x-2 px-3 py-1.5 rounded-md bg-[#C5C5C54D]"
           onClick={handleFavourites}
         >
-          <span>Add to Favourite</span>
+          <span>
+            {isFavourite ? "Remove from favourites" : "Add to Favourites"}
+          </span>
           <img src={isFavourite ? RedHeartIcon : HeartIcon} alt="heart" />
         </button>
       </div>
